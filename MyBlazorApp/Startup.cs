@@ -36,6 +36,8 @@ namespace MyBlazorApp
             // Dependency Injection for In Memory Data Store
             services.AddScoped<ICategoryRepository, CategoryInMemoryRepository>();
             services.AddScoped<IProductRepository, ProductInMemoryRepository>();
+            services.AddScoped<ITransactionRepository, TransactionInMemoryRepository>();
+
             // Dependency Injection for Use Cases and Repositories
             services.AddTransient<IViewCategoriesUseCase, ViewCategoriesUseCase>();
             services.AddTransient<IAddCategoryUseCase, AddCategoryUseCase>();
@@ -48,6 +50,11 @@ namespace MyBlazorApp
             services.AddTransient<IEditProductUseCase, EditProductUseCase>();
             services.AddTransient<IGetProductByIdUseCase, GetProductByIdUseCase>();
             services.AddTransient<IDeleteProductUseCase, DeleteProductUseCase>();
+
+            services.AddTransient<IViewProductsByCategoryId, ViewProductsByCategoryId>();
+            services.AddTransient<ISellProductUseCase, SellProductUseCase>();
+            services.AddTransient<IRecordTransactionUseCase, RecordTransactionUseCase>();
+            services.AddTransient<IGetTodayTransactionUseCase, GetTodayTransactionUseCase>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
